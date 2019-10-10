@@ -202,7 +202,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-int	PolyphaseIir2Designer::compute_nbr_coefs_from_proto (double attenuation, double transition)
+inline int	PolyphaseIir2Designer::compute_nbr_coefs_from_proto (double attenuation, double transition)
 {
 	assert (attenuation > 0);
 	assert (transition > 0);
@@ -233,7 +233,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-double	PolyphaseIir2Designer::compute_atten_from_order_tbw (int nbr_coefs, double transition)
+inline double	PolyphaseIir2Designer::compute_atten_from_order_tbw (int nbr_coefs, double transition)
 {
 	assert (nbr_coefs > 0);
 	assert (transition > 0);
@@ -268,7 +268,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-int	PolyphaseIir2Designer::compute_coefs (double coef_arr [], double attenuation, double transition)
+inline int	PolyphaseIir2Designer::compute_coefs (double coef_arr [], double attenuation, double transition)
 {
 	assert (attenuation > 0);
 	assert (transition > 0);
@@ -310,7 +310,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-void	PolyphaseIir2Designer::compute_coefs_spec_order_tbw (double coef_arr [], int nbr_coefs, double transition)
+inline void	PolyphaseIir2Designer::compute_coefs_spec_order_tbw (double coef_arr [], int nbr_coefs, double transition)
 {
 	assert (nbr_coefs > 0);
 	assert (transition > 0);
@@ -346,7 +346,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-double	PolyphaseIir2Designer::compute_phase_delay (double a, double f_fs)
+inline double	PolyphaseIir2Designer::compute_phase_delay (double a, double f_fs)
 {
 	assert (a >= 0);
 	assert (a <= 1);
@@ -390,7 +390,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-double	PolyphaseIir2Designer::compute_group_delay (double a, double f_fs, bool ph_flag)
+inline double	PolyphaseIir2Designer::compute_group_delay (double a, double f_fs, bool ph_flag)
 {
 	assert (a >= 0);
 	assert (a <= 1);
@@ -426,7 +426,7 @@ Throws: Nothing
 ==============================================================================
 */
 
-double	PolyphaseIir2Designer::compute_group_delay (const double coef_arr [], int nbr_coefs, double f_fs, bool ph_flag)
+inline double	PolyphaseIir2Designer::compute_group_delay (const double coef_arr [], int nbr_coefs, double f_fs, bool ph_flag)
 {
 	assert (nbr_coefs > 0);
 	assert (f_fs >= 0);
@@ -452,7 +452,7 @@ double	PolyphaseIir2Designer::compute_group_delay (const double coef_arr [], int
 
 
 
-void	PolyphaseIir2Designer::compute_transition_param (double &k, double &q, double transition)
+inline void	PolyphaseIir2Designer::compute_transition_param (double &k, double &q, double transition)
 {
 	assert (transition > 0);
 	assert (transition < 0.5);
@@ -471,7 +471,7 @@ void	PolyphaseIir2Designer::compute_transition_param (double &k, double &q, doub
 
 
 
-int	PolyphaseIir2Designer::compute_order (double attenuation, double q)
+inline int	PolyphaseIir2Designer::compute_order (double attenuation, double q)
 {
 	assert (attenuation > 0);
 	assert (q > 0);
@@ -493,7 +493,7 @@ int	PolyphaseIir2Designer::compute_order (double attenuation, double q)
 
 
 
-double	PolyphaseIir2Designer::compute_atten (double q, int order)
+inline double	PolyphaseIir2Designer::compute_atten (double q, int order)
 {
 	assert (q > 0);
 	assert (order > 0);
@@ -510,7 +510,7 @@ double	PolyphaseIir2Designer::compute_atten (double q, int order)
 
 
 
-double	PolyphaseIir2Designer::compute_coef (int index, double k, double q, int order)
+inline double	PolyphaseIir2Designer::compute_coef (int index, double k, double q, int order)
 {
 	assert (index >= 0);
 	assert (index * 2 < order);
@@ -529,7 +529,7 @@ double	PolyphaseIir2Designer::compute_coef (int index, double k, double q, int o
 
 
 
-double	PolyphaseIir2Designer::compute_acc_num (double q, int order, int c)
+inline double	PolyphaseIir2Designer::compute_acc_num (double q, int order, int c)
 {
 	assert (c >= 1);
 	assert (c < order * 2);
@@ -554,7 +554,7 @@ double	PolyphaseIir2Designer::compute_acc_num (double q, int order, int c)
 
 
 
-double	PolyphaseIir2Designer::compute_acc_den (double q, int order, int c)
+inline double	PolyphaseIir2Designer::compute_acc_den (double q, int order, int c)
 {
 	assert (c >= 1);
 	assert (c < order * 2);
