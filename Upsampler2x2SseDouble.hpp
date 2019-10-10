@@ -105,7 +105,7 @@ void	Upsampler2x2SseDouble <NC>::process_sample (__m128d &out_0, __m128d &out_1,
 {
 	__m128d         even = input;
 	__m128d         odd  = input;
-	StageProc2Sse <NBR_COEFS>::process_sample_pos (
+	StageProc2SseDouble <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS,
 		even,
 		odd,
@@ -135,7 +135,7 @@ Throws: Nothing
 */
 
 template <int NC>
-void	Upsampler2x2SseDouble <NC>::process_block (float out_ptr [], const float in_ptr [], long nbr_spl)
+void	Upsampler2x2SseDouble <NC>::process_block (double out_ptr [], const double in_ptr [], long nbr_spl)
 {
 	assert (out_ptr != 0);
 	assert (in_ptr != 0);

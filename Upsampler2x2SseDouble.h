@@ -67,7 +67,7 @@ public:
 	void				set_coefs (const double coef_arr [NBR_COEFS]);
 	hiir_FORCEINLINE void
 	               process_sample (__m128d &out_0, __m128d &out_1, __m128d input);
-	void				process_block (float out_ptr [], const float in_ptr [], long nbr_spl);
+	void				process_block (double out_ptr [], const double in_ptr [], long nbr_spl);
 	void				clear_buffers ();
 
 
