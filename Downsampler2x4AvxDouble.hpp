@@ -132,7 +132,7 @@ __m256d	Downsampler2x4AvxDouble <NC>::process_sample (__m256d in_0, __m256d in_1
 	__m256d         spl_0 = in_1;
 	__m256d         spl_1 = in_0;
 
-	StageProc4Avx <NBR_COEFS>::process_sample_pos (
+	StageProc4AvxDouble <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS, spl_0, spl_1, &_filter [0]
 	);
 
@@ -241,7 +241,7 @@ void	Downsampler2x4AvxDouble <NC>::process_sample_split (__m256d &low, __m256d &
 	__m256d         spl_0 = in_1;
 	__m256d         spl_1 = in_0;
 
-	StageProc4Avx <NBR_COEFS>::process_sample_pos (
+	StageProc4AvxDouble <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS, spl_0, spl_1, &_filter [0]
 	);
 

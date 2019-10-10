@@ -105,7 +105,7 @@ void	Upsampler2x4AvxDouble <NC>::process_sample (__m256d &out_0, __m256d &out_1,
 {
 	__m256d         even = input;
 	__m256d         odd  = input;
-	StageProc4Avx <NBR_COEFS>::process_sample_pos (
+	StageProc4AvxDouble <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS,
 		even,
 		odd,
@@ -135,7 +135,7 @@ Throws: Nothing
 */
 
 template <int NC>
-void	Upsampler2x4AvxDouble <NC>::process_block (float out_ptr [], const float in_ptr [], long nbr_spl)
+void	Upsampler2x4AvxDouble <NC>::process_block (double out_ptr [], const double in_ptr [], long nbr_spl)
 {
 	assert (out_ptr != 0);
 	assert (in_ptr != 0);
