@@ -132,7 +132,7 @@ __m128d	Downsampler2x2SseDouble <NC>::process_sample (__m128d in_0, __m128d in_1
 	__m128d         spl_0 = in_1;
 	__m128d         spl_1 = in_0;
 
-	StageProc2Sse <NBR_COEFS>::process_sample_pos (
+	StageProc2SseDouble <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS, spl_0, spl_1, &_filter [0]
 	);
 
