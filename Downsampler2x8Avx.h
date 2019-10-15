@@ -7,7 +7,7 @@
 Downsamples vectors of 8 float by a factor 2 the input signal, using SSE
 instruction set.
 
-This object must be aligned on a 16-byte boundary!
+This object must be aligned on a 32-byte boundary!
 
 Template parameters:
 	- NC: number of coefficients, > 0
