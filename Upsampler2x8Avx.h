@@ -4,10 +4,10 @@
         Ported  Upsampler2x4Sse.h from SSE to AVX by Dario Mambro
         Upsampler2x4Sse.h by Laurent de Soras
 
-Upsamples vectors of 8 float by a factor 2 the input signal, using the SSE
+Upsamples vectors of 8 float by a factor 2 the input signal, using the AVX
 instruction set.
 
-This object must be aligned on a 16-byte boundary!
+This object must be aligned on a 32-byte boundary!
 
 Template parameters:
 	- NC: number of coefficients, > 0
@@ -60,9 +60,20 @@ class Upsampler2x8Avx
 
 public:
 
+	typedef float DataType;
+	static const int  _nbr_chn = 8;
+
 	enum {         NBR_COEFS = NC };
 
 	               Upsampler2x8Avx ();
+	               Upsampler2x8Avx (const Upsampler2x8Avx <NC> &other) = default;
+	               Upsampler2x8Avx (Upsampler2x8Avx <NC> &&other)      = default;
+	               ~Upsampler2x8Avx ()                            = default;
+
+	Upsampler2x8Avx <NC> &
+	               operator = (const Upsampler2x8Avx <NC> &other) = default;
+	Upsampler2x8Avx <NC> &
+	               operator = (Upsampler2x8Avx <NC> &&other)      = default;
 
 	void				set_coefs (const double coef_arr [NBR_COEFS]);
 	hiir_FORCEINLINE void
@@ -92,8 +103,8 @@ private:
 
 private:
 
-	bool           operator == (const Upsampler2x8Avx <NC> &other) const;
-	bool           operator != (const Upsampler2x8Avx <NC> &other) const;
+	bool           operator == (const Upsampler2x8Avx <NC> &other) const = delete;
+	bool           operator != (const Upsampler2x8Avx <NC> &other) const = delete;
 
 }; // class Upsampler2x8Avx
 

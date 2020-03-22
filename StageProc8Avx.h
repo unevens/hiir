@@ -77,12 +77,16 @@ private:
 
 private:
 
-	               StageProc8Avx ();
-	               StageProc8Avx (const StageProc8Avx <REMAINING> &other);
+	               StageProc8Avx ()                                       = delete;
+	               StageProc8Avx (const StageProc8Avx <REMAINING> &other) = delete;
+	               StageProc8Avx (StageProc8Avx <REMAINING> &&other)    = delete;
+	               ~StageProc8Avx ()                                    = delete;
 	StageProc8Avx <REMAINING> &
-						operator = (const StageProc8Avx <REMAINING> &other);
-	bool           operator == (const StageProc8Avx <REMAINING> &other);
-	bool           operator != (const StageProc8Avx <REMAINING> &other);
+						operator = (const StageProc8Avx <REMAINING> &other)  = delete;
+	StageProc8Avx <REMAINING> &
+						operator = (StageProc8Avx <REMAINING> &&other)       = delete;
+	bool           operator == (const StageProc8Avx <REMAINING> &other) = delete;
+	bool           operator != (const StageProc8Avx <REMAINING> &other) = delete;
 
 }; // class StageProc8Avx
 

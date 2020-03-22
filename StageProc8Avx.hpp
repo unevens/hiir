@@ -1,7 +1,7 @@
 /*****************************************************************************
 
         StageProc8Avx.hpp
-		Port of StageProc4See.hpp from SSE to AVX by Dario Mambro
+        Port of StageProc4See.hpp from SSE to AVX by Dario Mambro
         StageProc4See.hpp by Laurent de Soras, 2015
 
 --- Legal stuff ---
