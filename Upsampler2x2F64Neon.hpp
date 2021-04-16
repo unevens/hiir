@@ -146,7 +146,7 @@ void	Upsampler2x2F64Neon <NC>::process_block (double out_ptr [], const double in
 	long           pos = 0;
 	do
 	{
-		const float64x2_t src = load4u (in_ptr + pos * _nbr_chn);
+		const float64x2_t src = vld1q_f64 (in_ptr + pos * _nbr_chn);
 		float64x2_t       dst_0;
 		float64x2_t       dst_1;
 		process_sample (dst_0, dst_1, src);

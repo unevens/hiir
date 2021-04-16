@@ -23,7 +23,7 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 
 /*\\\ INCLUDE FILES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
-#include "hiir/StageProc4Neon.h"
+#include "hiir/StageProc2F64Neon.h"
 
 #include <cassert>
 
@@ -51,7 +51,7 @@ Downsampler2x2F64Neon <NC>::Downsampler2x2F64Neon ()
 {
 	for (int i = 0; i < NBR_COEFS + 2; ++i)
 	{
-		vst1q_f64 (_filter [i]._coef, vdupq_n_f32 (0));
+		vst1q_f64 (_filter [i]._coef, vdupq_n_f64 (0));
 	}
 
 	clear_buffers ();
@@ -80,7 +80,7 @@ void	Downsampler2x2F64Neon <NC>::set_coefs (const double coef_arr [])
 
 	for (int i = 0; i < NBR_COEFS; ++i)
 	{
-		vst1q_f64 (_filter [i + 2]._coef, vdupq_n_f32 (DataType (coef_arr [i])));
+		vst1q_f64 (_filter [i + 2]._coef, vdupq_n_f64 (DataType (coef_arr [i])));
 	}
 }
 
@@ -104,8 +104,8 @@ float64x2_t	Downsampler2x2F64Neon <NC>::process_sample (const double in_ptr [4])
 {
 	assert (in_ptr != nullptr);
 
-	const float64x2_t in_0 = vld1_f64 (in_ptr    );
-	const float64x2_t in_1 = vld1_f64 (in_ptr + 2);
+	const float64x2_t in_0 = vld1q_f64 (in_ptr    );
+	const float64x2_t in_1 = vld1q_f64 (in_ptr + 2);
 
 	return process_sample (in_0, in_1);
 }
@@ -132,12 +132,12 @@ float64x2_t	Downsampler2x2F64Neon <NC>::process_sample (float64x2_t in_0, float6
 	float64x2_t    spl_0 = in_1;
 	float64x2_t    spl_1 = in_0;
 
-	StageProc4Neon <NBR_COEFS>::process_sample_pos (
+	StageProc2F64Neon <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS, spl_0, spl_1, &_filter [0]
 	);
 
 	const float64x2_t   sum = spl_0 + spl_1;
-	const float64x2_t   out = sum * vdupq_n_f32 (0.5f);
+	const float64x2_t   out = sum * vdupq_n_f64 (0.5f);
 
 	return out;
 }
@@ -241,12 +241,12 @@ void	Downsampler2x2F64Neon <NC>::process_sample_split (float64x2_t &low, float64
 	float64x2_t    spl_0 = in_1;
 	float64x2_t    spl_1 = in_0;
 
-	StageProc4Neon <NBR_COEFS>::process_sample_pos (
+	StageProc2F64Neon <NBR_COEFS>::process_sample_pos (
 		NBR_COEFS, spl_0, spl_1, &_filter [0]
 	);
 
 	const float64x2_t sum = spl_0 + spl_1;
-	low  = sum * vdupq_n_f32 (0.5f);
+	low  = sum * vdupq_n_f64 (0.5f);
 	high = spl_0 - low;
 }
 
@@ -320,7 +320,7 @@ void	Downsampler2x2F64Neon <NC>::clear_buffers ()
 {
 	for (int i = 0; i < NBR_COEFS + 2; ++i)
 	{
-		vst1q_f64 (_filter [i]._mem, vdupq_n_f32 (0));
+		vst1q_f64 (_filter [i]._mem, vdupq_n_f64 (0));
 	}
 }
 

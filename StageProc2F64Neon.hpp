@@ -42,9 +42,9 @@ inline void	StageProc2F64Neon <1>::process_sample_pos (const int nbr_coefs, floa
 	const int      cnt = nbr_coefs + 2 - 1;
 
 	const float64x2_t tmp_0 = vmlaq_f64 (
-		        vld1_f64 (stage_arr [cnt - 2]._mem ),
-		spl_0 - vld1_f64 (stage_arr [cnt    ]._mem ),
-		        vld1_f64 (stage_arr [cnt    ]._coef)
+		        vld1q_f64 (stage_arr [cnt - 2]._mem ),
+		spl_0 - vld1q_f64 (stage_arr [cnt    ]._mem ),
+		        vld1q_f64 (stage_arr [cnt    ]._coef)
 	);
 
 	vst1q_f64 (stage_arr [cnt - 2]._mem, spl_0);
@@ -73,14 +73,14 @@ void	StageProc2F64Neon <REMAINING>::process_sample_pos (const int nbr_coefs, flo
 	const int      cnt = nbr_coefs + 2 - REMAINING;
 
 	const float64x2_t tmp_0 = vmlaq_f64 (
-		        vld1_f64 (stage_arr [cnt - 2]._mem ),
-		spl_0 - vld1_f64 (stage_arr [cnt    ]._mem ),
-		        vld1_f64 (stage_arr [cnt    ]._coef)
+		        vld1q_f64 (stage_arr [cnt - 2]._mem ),
+		spl_0 - vld1q_f64 (stage_arr [cnt    ]._mem ),
+		        vld1q_f64 (stage_arr [cnt    ]._coef)
 	);
 	const float64x2_t tmp_1 = vmlaq_f64 (
-		        vld1_f64 (stage_arr [cnt - 1]._mem ),
-		spl_1 - vld1_f64 (stage_arr [cnt + 1]._mem ),
-		        vld1_f64 (stage_arr [cnt + 1]._coef)
+		        vld1q_f64 (stage_arr [cnt - 1]._mem ),
+		spl_1 - vld1q_f64 (stage_arr [cnt + 1]._mem ),
+		        vld1q_f64 (stage_arr [cnt + 1]._coef)
 	);
 
 	vst1q_f64 (stage_arr [cnt - 2]._mem, spl_0);
@@ -105,9 +105,9 @@ inline void	StageProc2F64Neon <1>::process_sample_neg (const int nbr_coefs, floa
 	const int      cnt = nbr_coefs + 2 - 1;
 
 	float64x2_t tmp_0 = spl_0;
-	tmp_0 += vld1_f64 (stage_arr [cnt    ]._mem );
-	tmp_0 *= vld1_f64 (stage_arr [cnt    ]._coef);
-	tmp_0 -= vld1_f64 (stage_arr [cnt - 2]._mem );
+	tmp_0 += vld1q_f64 (stage_arr [cnt    ]._mem );
+	tmp_0 *= vld1q_f64 (stage_arr [cnt    ]._coef);
+	tmp_0 -= vld1q_f64 (stage_arr [cnt - 2]._mem );
 
 	vst1q_f64 (stage_arr [cnt - 2]._mem, spl_0);
 	vst1q_f64 (stage_arr [cnt - 1]._mem, spl_1);
@@ -131,14 +131,14 @@ void	StageProc2F64Neon <REMAINING>::process_sample_neg (const int nbr_coefs, flo
 	const int      cnt = nbr_coefs + 2 - REMAINING;
 
 	float64x2_t tmp_0 = spl_0;
-	tmp_0 += vld1_f64 (stage_arr [cnt    ]._mem );
-	tmp_0 *= vld1_f64 (stage_arr [cnt    ]._coef);
-	tmp_0 -= vld1_f64 (stage_arr [cnt - 2]._mem );
+	tmp_0 += vld1q_f64 (stage_arr [cnt    ]._mem );
+	tmp_0 *= vld1q_f64 (stage_arr [cnt    ]._coef);
+	tmp_0 -= vld1q_f64 (stage_arr [cnt - 2]._mem );
 
 	float64x2_t tmp_1 = spl_1;
-	tmp_1 += vld1_f64 (stage_arr [cnt + 1]._mem );
-	tmp_1 *= vld1_f64 (stage_arr [cnt + 1]._coef);
-	tmp_1 -= vld1_f64 (stage_arr [cnt - 1]._mem );
+	tmp_1 += vld1q_f64 (stage_arr [cnt + 1]._mem );
+	tmp_1 *= vld1q_f64 (stage_arr [cnt + 1]._coef);
+	tmp_1 -= vld1q_f64 (stage_arr [cnt - 1]._mem );
 
 	vst1q_f64 (stage_arr [cnt - 2]._mem, spl_0);
 	vst1q_f64 (stage_arr [cnt - 1]._mem, spl_1);

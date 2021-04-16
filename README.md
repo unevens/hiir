@@ -17,4 +17,10 @@ As of March 2020 this functionality has been merged in the official release of H
 
 This repository has been updated to version 1.30, but is header-only, and does not contain the `test` folder.
 
+As of April 2021 I added support for double precision floating point data using Neon on ARM AArch64, making the library able to work with:
+
+- 2 interleaved channels of double precision floating point data (using Neon instructions).
+
 For usage instructions see the original library readme: `readme.txt`.
+
+For a crossplatform wrapper around this library - and more -, see [oversimple](https://github.com/unevens/oversimple).

@@ -23,7 +23,7 @@ http://sam.zoy.org/wtfpl/COPYING for more details.
 /*\\\ INCLUDE FILES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
 
 #include "hiir/StageDataNeonV4.h"
-
+#include "hiir/fnc_neon.h"
 
 
 namespace hiir

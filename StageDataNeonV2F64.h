@@ -46,16 +46,16 @@ public:
 
 	union
 	{
-		__attribute__ ((aligned (16))) float64x2_t
+		__attribute__ ((aligned (32))) float64x2_t
 		               _coef2;
-		__attribute__ ((aligned (16))) float
+		__attribute__ ((aligned (32))) double
 		               _coef [2];
 	};
 	union
 	{
-		__attribute__ ((aligned (16))) float64x2_t
+		__attribute__ ((aligned (32))) float64x2_t
 		               _mem2;
-		__attribute__ ((aligned (16))) float
+		__attribute__ ((aligned (32))) double
 		               _mem [2];   // y of the stage
 	};
 
