@@ -206,8 +206,8 @@ void	Downsampler2x2F64Neon <NC>::process_sample_split (float64x2_t &low, float64
 {
 	assert (in_ptr != nullptr);
 
-	const float64x2_t in_0 = vld1_f64 (in_ptr    );
-	const float64x2_t in_1 = vld1_f64 (in_ptr + 2);
+	const float64x2_t in_0 = vld1q_f64 (in_ptr    );
+	const float64x2_t in_1 = vld1q_f64 (in_ptr + 2);
 
 	process_sample_split (low, high, in_0, in_1);
 }
